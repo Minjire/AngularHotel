@@ -16,13 +16,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+
+import { DishService } from './services/dish.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    DishdetailComponent
+    DishdetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { DatePipe } from '@angular/common'
     MatCardModule,
     MatButtonModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
