@@ -19,12 +19,18 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DatePipe } from '@angular/common';
 
 import { DishService } from './services/dish.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     DishdetailComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,8 @@ import { DishService } from './services/dish.service';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    // AngularFontAwesomeModule
   ],
   providers: [DatePipe, DishService],
   bootstrap: [AppComponent]
