@@ -9,19 +9,24 @@ import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
 import { MatListModule } from '@angular/material/list';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { DishdetailComponent } from './dishdetail/dishdetail.component';
-import { DatePipe } from '@angular/common';
 
+import { DatePipe } from '@angular/common';
 import { DishService } from './services/dish.service';
+
+import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { MenuComponent } from './menu/menu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 
 @NgModule({
@@ -31,6 +36,9 @@ import { FooterComponent } from './footer/footer.component';
     DishdetailComponent,
     HeaderComponent,
     FooterComponent,
+    AboutComponent,
+    HomeComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
