@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { DatePipe } from '@angular/common';
 import { DishService } from './services/dish.service';
+import { PromotionService } from './services/promotion.service'
 
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { MenuComponent } from './menu/menu.component';
@@ -52,7 +53,7 @@ import { ContactComponent } from './contact/contact.component';
     MatButtonModule,
     // AngularFontAwesomeModule
   ],
-  providers: [DatePipe, DishService],
+  providers: [DatePipe, DishService, PromotionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
