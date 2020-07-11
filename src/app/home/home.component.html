@@ -3,25 +3,28 @@
      fxLayout.sm="column"
      fxLayout.xs="column"
      fxLayoutAlign.gt-md="space-around center"
-     fxLayoutGap="2px">
+     fxLayoutGap="10px">
 
-    <div fxFlex="30">
-    <mat-card *ngIf="dish" fxFlex>
-    <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>
-        <h3>{{dish.name | uppercase}}</h3>
-        </mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src={{dish.image}} alt={{dish.name}}>
-    <mat-card-content>
-        <p>{{dish.description}}
-        </p>
-    </mat-card-content>
-    </mat-card>
-    </div>
+    <!-- <div fxFlex="30"> -->
+        <mat-card *ngIf="dish" fxFlex>
+            <mat-card-header>
+                <div mat-card-avatar></div>
+                <mat-card-title>
+                <h3>{{dish.name | uppercase}}</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+            <mat-card-content>
+                <p>{{dish.description}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <div [hidden]="dish">
+            <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+        </div>
+    <!-- </div> -->
 
-    <div fxFlex="30">
+    <!-- <div fxFlex="30"> -->
         <mat-card *ngIf="promotion" fxFlex>
         <mat-card-header>
             <div mat-card-avatar></div>
@@ -35,9 +38,12 @@
             </p>
         </mat-card-content>
         </mat-card>
-    </div>
+        <div [hidden]="promotion">
+            <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+        </div>
+    <!-- </div> -->
 
-    <div fxFlex="30">
+    <!-- <div fxFlex="30"> -->
         <mat-card *ngIf="featuredLeader" fxFlex>
             <mat-card-header>
                 <div mat-card-avatar></div>
@@ -51,5 +57,8 @@
                 <p>{{featuredLeader.description}}</p>
             </mat-card-footer>
         </mat-card>
-    </div>
+        <div [hidden]="featuredLeader">
+            <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+        </div>
+    <!-- </div> -->
 </div>
