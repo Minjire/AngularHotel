@@ -14,8 +14,10 @@ import { LeaderService } from '../services/leader.service';
 export class HomeComponent implements OnInit {
 
   dish: Dish;
+  dishErrMess: string;
   promotion: Promotion;
   featuredLeader: Leader;
+  
 
   constructor(private dishService: DishService, 
     private promotionService: PromotionService,
@@ -32,7 +34,8 @@ export class HomeComponent implements OnInit {
     //   .then(featuredLeader => this.featuredLeader = featuredLeader);
 
     //Using Observables in service
-    this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish);
+    this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish, 
+      errmess => this.dishErrMess = <any>errmess);
     console.log(this.dish)
     this.promotionService.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion);
     this.leaderService.getFeaturedLeader().subscribe(featuredLeader => this.featuredLeader = featuredLeader);

@@ -5,7 +5,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import 'hammerjs';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -30,6 +29,7 @@ import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { baseURL } from './shared/baseurl';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { MenuComponent } from './menu/menu.component';
@@ -40,7 +40,6 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 
 
 @NgModule({
@@ -78,7 +77,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     // AngularFontAwesomeModule
   ],
-  providers: [DatePipe, DishService, PromotionService, LeaderService, 
+  providers: [DatePipe, DishService, PromotionService, LeaderService, ProcessHTTPMsgService, 
     {provide: 'BaseURL', useValue: baseURL}],
   bootstrap: [AppComponent],
   entryComponents: [
