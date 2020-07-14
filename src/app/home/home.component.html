@@ -6,7 +6,7 @@
      fxLayoutGap="10px">
 
 
-        <mat-card *ngIf="dish" fxFlex>
+        <mat-card *ngIf="dish" fxFlex [@expand]>
             <mat-card-header>
                 <div mat-card-avatar></div>
                 <mat-card-title>
@@ -29,7 +29,7 @@
     
 
     
-        <mat-card *ngIf="promotion" fxFlex>
+        <mat-card *ngIf="promotion" fxFlex [@expand]>
         <mat-card-header>
             <div mat-card-avatar></div>
             <mat-card-title>
@@ -48,7 +48,7 @@
     
 
     
-        <mat-card *ngIf="featuredLeader" fxFlex>
+        <mat-card *ngIf="featuredLeader" fxFlex> [@expand]
             <mat-card-header>
                 <div mat-card-avatar></div>
                 <mat-card-title>
