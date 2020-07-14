@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-menu',
@@ -14,9 +14,9 @@ export class MenuComponent implements OnInit {
 
   dishes: Dish[];
   errMess: string;
+  BaseURL = environment.baseURL;
 
-  constructor(private dishService: DishService, 
-    @Inject('baseURL') private baseURL) { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit(): void {
     // Using Promises in the services

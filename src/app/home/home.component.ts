@@ -5,6 +5,8 @@ import { Promotion } from '../shared/promotion';
 import { PromotionService } from '../services/promotion.service';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
+import { first } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +19,13 @@ export class HomeComponent implements OnInit {
   dishErrMess: string;
   promotion: Promotion;
   featuredLeader: Leader;
+  // dishes: Dish[];
+  BaseURL = environment.baseURL;
   
 
   constructor(private dishService: DishService, 
     private promotionService: PromotionService,
-    private leaderService: LeaderService,
-    @Inject('baseURL') private baseURL) { }
+    private leaderService: LeaderService,) { }
 
   ngOnInit(): void {
     // Using Promises in services
@@ -34,9 +37,13 @@ export class HomeComponent implements OnInit {
     //   .then(featuredLeader => this.featuredLeader = featuredLeader);
 
     //Using Observables in service
+    // this.dishService.getDishes().pipe(first()).subscribe(dishes => {
+    //   this.dishes = dishes;
+    //   console.log(this.dishes);
+    // })
+
     this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish, 
       errmess => this.dishErrMess = <any>errmess);
-    console.log(this.dish)
     this.promotionService.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion);
     this.leaderService.getFeaturedLeader().subscribe(featuredLeader => this.featuredLeader = featuredLeader);
   }

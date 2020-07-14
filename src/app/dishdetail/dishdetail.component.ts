@@ -6,6 +6,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class DishdetailComponent implements OnInit {
   next: string;
   date: string;
   errMess: string;
+  BaseURL = environment.baseURL;
+  dishcopy: Dish;
 
   formErrors = {
     'author': '',
@@ -44,7 +47,6 @@ export class DishdetailComponent implements OnInit {
     constructor(private dishService: DishService,
       private route: ActivatedRoute,
       private location: Location,
-      @Inject('baseURL') private baseURL,
       private fb: FormBuilder) {
         this.createForm();
         this.commentForm.patchValue({slider: '5'});
@@ -63,7 +65,7 @@ export class DishdetailComponent implements OnInit {
       this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds); 
         // errmess => this.errMess = <any>errmess);
       this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); }, 
+        .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); }, 
         errmess => this.errMess = <any>errmess);
     }
 
@@ -113,14 +115,20 @@ export class DishdetailComponent implements OnInit {
       this.comment = this.commentForm.value;
       this.date = new Date().toISOString();
       this.comment.date = this.date
-      this.dish.comments.push(this.comment)
       console.log(this.comment);
+      this.dishcopy.comments.push(this.comment)
+      this.dishService.putDish(this.dishcopy).subscribe(dish => {
+        this.dish = dish; this.dishcopy = dish;
+      },
+      errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess;})
+      this.commentFormDirective.resetForm();
       this.commentForm.reset({
         author: '',
         comment: '',
+        rating: '5'
       });      
-      this.commentFormDirective.resetForm();
-      this.commentForm.patchValue({rating: '5'});
+      
+      // this.commentForm.patchValue({});
     }
 
     get authorname() { return this.commentForm.get('author').value; }

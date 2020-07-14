@@ -28,7 +28,6 @@ import { DatePipe } from '@angular/common';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import { baseURL } from './shared/baseurl';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
@@ -77,8 +76,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     // AngularFontAwesomeModule
   ],
-  providers: [DatePipe, DishService, PromotionService, LeaderService, ProcessHTTPMsgService, 
-    {provide: 'BaseURL', useValue: baseURL}],
+  providers: [DatePipe, DishService, PromotionService, LeaderService, ProcessHTTPMsgService],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent
