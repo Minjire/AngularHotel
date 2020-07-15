@@ -48,20 +48,20 @@
     
 
     
-        <mat-card *ngIf="featuredLeader" fxFlex> [@expand]
+        <mat-card *ngIf="featuredLeader" fxFlex [@expand]>
             <mat-card-header>
                 <div mat-card-avatar></div>
                 <mat-card-title>
                 <h3>{{featuredLeader.name | uppercase}} {{featuredLeader.abbr | uppercase}}</h3>
                 </mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="{{BaseURL + featuredLeader.image}}" alt={{featuredleader.name}}>
+            <img mat-card-image src="{{BaseURL + featuredLeader.image}}" alt={{featuredLeader.name}}>
             <mat-card-footer>
                 <p>{{featuredLeader.designation}}</p>
                 <p>{{featuredLeader.description}}</p>
             </mat-card-footer>
         </mat-card>
-        <div [hidden]="featuredLeader || dishErrMess ">
+        <div [hidden]="featuredLeader">
             <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
         </div>    
 </div>
