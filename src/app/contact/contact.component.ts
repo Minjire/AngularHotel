@@ -28,6 +28,7 @@ export class ContactComponent implements OnInit {
   contactType = ContactType;
   errMess: string;
   BaseURL = environment.baseURL;
+  submitted: boolean = false;
   // feedbackcopy: Feedback;
 
   formErrors = {
@@ -108,6 +109,7 @@ export class ContactComponent implements OnInit {
     console.log(this.feedback); 
     this.feedbackService.submitFeedback(this.feedback).subscribe(feedback => {
         this.feedback = feedback;
+        this.submitted = true;
       },
       errmess => { this.feedback = null; this.errMess = <any>errmess;})
         
@@ -122,7 +124,9 @@ export class ContactComponent implements OnInit {
     }); 
     this.feedbackFormDirective.resetForm()
     
-    setTimeout( () => {}, 5000);
+    setTimeout( () => {
+      this.submitted = false;
+    }, 5000);
     
   }
 
